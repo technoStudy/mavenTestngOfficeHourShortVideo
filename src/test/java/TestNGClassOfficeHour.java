@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -106,8 +107,21 @@ public class TestNGClassOfficeHour {
         WebElement buttonNationalities = driver.findElement(By.xpath("//span[text()='Nationalities']"));
 
         buttonNationalities.click();
+
+        // element for plus icon
+        WebElement buttonPlus = driver.findElement(By.xpath("//ms-add-button//button"));
+
+        //wait until plus icon is clickable
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(buttonPlus));
+        }catch(Exception e){
+            System.out.println("plus icon is not clickable ");
+        }
+
+        //get the url
         String myUrl = driver.getCurrentUrl();
 
+        // verify url is correct
         Assert.assertEquals(myUrl ,"https://test-basqar.mersys.io/nationality/list" );
 
     }

@@ -1,0 +1,15 @@
+<suite name="SmokeTestSuite" parallel="classes">
+    <test name="SmokeTestTest">
+
+        <parameter name="username" value="nigeria_tenant_admin"></parameter>
+        <parameter name="password" value="TnvLOl54WxR75vylop2A"></parameter>
+        <parameter name="path" value="D:\Selenium dependency\drivers\chromedriver.exe"></parameter>
+        <classes>
+            <class name ="ParallelTestingShortVideo.parallelTesting1"></class>
+            <class name ="ParallelTestingShortVideo.parallelTesting2"></class>
+        </classes>
+
+    </test>
+
+</suite>
+

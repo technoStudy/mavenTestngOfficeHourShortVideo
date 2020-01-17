@@ -1,0 +1,14 @@
+<suite name="SmokeTestSuite">
+    <test name="SmokeTestTest">
+
+
+        <parameter name="path" value="D:\Selenium dependency\drivers\chromedriver.exe"></parameter>
+        <classes>
+            <class name ="oneBeforeMethod.testOne"></class>
+            <class name ="oneBeforeMethod.testTwo"></class>
+        </classes>
+
+    </test>
+
+</suite>
+

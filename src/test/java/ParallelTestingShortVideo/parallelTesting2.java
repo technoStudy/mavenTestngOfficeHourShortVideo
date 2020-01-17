@@ -1,3 +1,5 @@
+package ParallelTestingShortVideo;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,14 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestNGClassOfficeHour2 {
-
-/*
-        work with one before method
-
-        singleton pattern
-
-*/
+public class parallelTesting2 {
 
     WebDriver driver ;
     WebDriverWait wait;
@@ -30,8 +25,7 @@ public class TestNGClassOfficeHour2 {
         driver = new ChromeDriver();
         driver.get("https://test-basqar.mersys.io");
         driver.manage().window().maximize();
-
-
+        // login info
         //write the username in the input
         WebElement inputUserName= driver.findElement(By.cssSelector("[formcontrolname=\"username\"]"));
         inputUserName.sendKeys(username);
@@ -49,9 +43,9 @@ public class TestNGClassOfficeHour2 {
 
     }
 
+    @Test(priority = 2)
+    public void URLNationality(){
 
-    @Test
-    public void test(){
         //click on setup
         WebElement buttonSetup = driver.findElement(By.xpath("//span[text()='Setup']"));
 
@@ -63,17 +57,56 @@ public class TestNGClassOfficeHour2 {
         buttonParamters.click();
 
         //click on the nationalities
-        WebElement buttonNationalities = driver.findElement(By.xpath("//span[text()='Citizenships']"));
+        WebElement buttonNationalities = driver.findElement(By.xpath("//span[text()='Nationalities']"));
 
         buttonNationalities.click();
 
+        WebElement buttonPlus = driver.findElement(By.xpath("//ms-add-button//button"));
+        try{
+
+            wait.until(ExpectedConditions.elementToBeClickable(buttonPlus));
+        }catch(Exception e){
+            System.out.println("plus icon is not clickable ");
+        }
 
         String myUrl = driver.getCurrentUrl();
 
         Assert.assertEquals(myUrl ,"https://test-basqar.mersys.io/nationality/list" );
 
-        By myel = By.cssSelector("div[aria-label=\" School successfully updated\"]") ;
+    }
 
+
+    @Test(priority = 1)
+    public void URLCitizenship(){
+
+        //click on setup
+        WebElement buttonSetup = driver.findElement(By.xpath("//span[text()='Setup']"));
+
+        buttonSetup.click();
+
+        //click on parameters
+        WebElement buttonParamters = driver.findElement(By.xpath("//span[text()='Parameters']"));
+
+        buttonParamters.click();
+
+        //click on the nationalities
+        WebElement buttonCitizenship = driver.findElement(By.xpath("//span[text()='Citizenships']"));
+
+        buttonCitizenship.click();
+
+        WebElement buttonPlus = driver.findElement(By.xpath("//ms-add-button//button"));
+        try{
+
+            wait.until(ExpectedConditions.elementToBeClickable(buttonPlus));
+        }catch(Exception e){
+            System.out.println("plus icon is not clickable ");
+        }
+
+        String myUrl = driver.getCurrentUrl();
+
+        Assert.assertEquals(myUrl ,"https://test-basqar.mersys.io/citizenships/list" );
 
     }
+
+
 }
